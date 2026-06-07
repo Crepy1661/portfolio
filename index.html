@@ -35,6 +35,7 @@
             max-width: 1100px;
             margin: 0 auto;
             padding: 20px;
+            box-sizing: border-box;
         }
 
         /* --- Navbar --- */
@@ -120,6 +121,11 @@
             padding: 60px;
             margin-top: 40px;
             border: 1px solid #222;
+            gap: 40px;
+        }
+
+        .hero-text {
+            flex: 1;
         }
 
         .hero-text h1 {
@@ -246,15 +252,6 @@
             display: grid;
             grid-template-columns: repeat(4, 1fr);
             gap: 20px;
-        }
-
-        @media (max-width: 900px) {
-            .four-cols {
-                grid-template-columns: 1fr 1fr;
-            }
-            .two-cols {
-                grid-template-columns: 1fr;
-            }
         }
 
         /* --- Cards --- */
@@ -586,6 +583,86 @@
         .lightbox-close:hover {
             transform: scale(1.15) rotate(90deg);
             color: #ff4a4a;
+        }
+
+        /* ==========================================================================
+           ⚡ RESPONSIBLE RESPONSIVE MEDIA QUERIES (Perfekt optimiert für alle Mobilgeräte)
+           ========================================================================== */
+
+        @media (max-width: 900px) {
+            .hero {
+                flex-direction: column-reverse; /* Bild rückt auf Handys nach oben über den Text */
+                text-align: center;
+                padding: 40px 20px;
+                gap: 30px;
+            }
+
+            .hero-text h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero-text h1 span {
+                font-size: 1.5rem;
+            }
+
+            .highlights {
+                justify-content: center;
+                gap: 15px;
+            }
+
+            .circle {
+                width: 70px;
+                height: 70px;
+                font-size: 1rem;
+            }
+
+            .btn-message {
+                margin-top: 30px;
+                width: 100%;
+                justify-content: center;
+                box-sizing: border-box;
+            }
+
+            .hero-avatar {
+                width: 220px;
+                height: 220px;
+                margin: 0 auto;
+            }
+
+            .two-cols {
+                grid-template-columns: 1fr; /* Stapelt Spalten auf Tablets/Handys untereinander */
+                gap: 20px;
+            }
+
+            .four-cols {
+                grid-template-columns: 1fr 1fr; /* 2 Spalten im Portfolio auf kleineren Screens */
+            }
+
+            .section-title::before, .section-title::after {
+                width: 20%; /* Verkürzt die Linien neben den Titeln */
+            }
+        }
+
+        @media (max-width: 500px) {
+            .four-cols {
+                grid-template-columns: 1fr; /* 1 Spalte im Portfolio auf sehr kleinen Handys */
+            }
+
+            nav {
+                flex-direction: column;
+                gap: 15px;
+                text-align: center;
+            }
+
+            .nav-right {
+                width: 100%;
+                justify-content: center;
+            }
+
+            .highlights {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
         }
 
     </style>
