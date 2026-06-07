@@ -1,0 +1,856 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Valentin | UI Designer</title>
+    <style>
+        /* Import Google Font */
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&display=swap');
+
+        :root {
+            --bg-color: #0b0b0b;
+            --card-bg: #ffffff;
+            --text-main: #ffffff;
+            --text-dark: #000000;
+            --accent: #2c2c2c;
+        }
+
+        html {
+            scroll-behavior: smooth; /* Aktiviert das flüssige Runterscrollen */
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            font-family: 'Montserrat', sans-serif;
+            /* Dot Pattern Background */
+            background-image: radial-gradient(#2a2a2a 1px, transparent 1px);
+            background-size: 30px 30px;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        /* --- Navbar --- */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+
+        .logo {
+            font-weight: 800;
+            font-size: 1.2rem;
+            letter-spacing: 1px;
+        }
+
+        .logo span {
+            font-weight: 400;
+            font-size: 0.9rem;
+            color: #aaa;
+        }
+
+        .nav-right {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .btn-nav-pricing {
+            background-color: #fff;
+            color: #000;
+            text-decoration: none;
+            padding: 10px 18px;
+            font-size: 0.9rem;
+            font-weight: 700;
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: background-color 0.3s, transform 0.2s;
+        }
+
+        .btn-nav-pricing:hover {
+            background-color: #ddd;
+            transform: scale(1.02);
+        }
+
+        .btn-nav-pricing .arrow {
+            font-size: 0.7rem;
+            color: #555;
+        }
+
+        .btn-nav-icon {
+            background-color: #fff;
+            width: 38px;
+            height: 38px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 6px;
+            text-decoration: none;
+            transition: background-color 0.3s, transform 0.2s;
+        }
+
+        .btn-nav-icon:hover {
+            background-color: #ddd;
+            transform: scale(1.05);
+        }
+
+        .btn-nav-icon svg {
+            width: 18px;
+            height: 18px;
+            fill: #000;
+        }
+
+        /* --- Hero Section --- */
+        .hero {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: linear-gradient(135deg, rgba(20,20,20,1) 0%, rgba(10,10,10,0) 100%);
+            border-radius: 20px;
+            padding: 60px;
+            margin-top: 40px;
+            border: 1px solid #222;
+            gap: 40px;
+        }
+
+        .hero-text {
+            flex: 1;
+        }
+
+        .hero-text h1 {
+            font-size: 3.5rem;
+            margin: 0 0 10px 0;
+            font-weight: 800;
+        }
+
+        .hero-text h1 span {
+            color: #aaa;
+            font-weight: 600;
+            font-size: 2rem;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .highlights {
+            display: flex;
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .highlight-item {
+            text-align: center;
+        }
+
+        .circle {
+            width: 80px;
+            height: 80px;
+            border: 3px solid #fff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+            box-shadow: 0 0 15px rgba(255,255,255,0.2);
+            transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.3s;
+        }
+
+        .circle:hover {
+            transform: scale(1.1);
+            box-shadow: 0 0 25px rgba(255,255,255,0.5);
+        }
+
+        .highlight-item p {
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin: 0;
+        }
+
+        .btn-message {
+            background-color: #fff;
+            color: #000;
+            text-decoration: none;
+            padding: 15px 30px;
+            font-size: 1rem;
+            font-weight: 700;
+            border-radius: 5px;
+            margin-top: 50px;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), background-color 0.3s;
+            width: fit-content;
+        }
+
+        .btn-message:hover {
+            background-color: #ddd;
+            transform: scale(1.05);
+        }
+
+        .btn-message svg {
+            width: 20px;
+            height: 20px;
+            fill: #000;
+        }
+
+        .hero-avatar {
+            width: 300px;
+            height: 300px;
+            border-radius: 20px;
+            object-fit: cover;
+            border: 1px solid #222;
+            transition: transform 0.4s ease;
+        }
+
+        .hero-avatar:hover {
+            transform: scale(1.03) rotate(1deg);
+        }
+
+        /* --- Section Titles --- */
+        .section-title {
+            text-align: center;
+            font-size: 1.2rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            color: #888;
+            margin: 80px 0 40px 0;
+            position: relative;
+        }
+
+        .section-title::before, .section-title::after {
+            content: "";
+            position: absolute;
+            top: 50%;
+            width: 35%;
+            height: 1px;
+            background-color: #333;
+        }
+
+        .section-title::before { left: 0; }
+        .section-title::after { right: 0; }
+
+        /* --- Grid Layouts --- */
+        .two-cols {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+        }
+
+        .four-cols {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+
+        /* --- Cards --- */
+        .card {
+            background-color: var(--card-bg);
+            color: var(--text-dark);
+            border-radius: 12px;
+            padding: 30px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card h2 {
+            font-size: 1.2rem;
+            text-transform: uppercase;
+            margin-top: 0;
+            margin-bottom: 20px;
+            border-bottom: 2px solid #eee;
+            padding-bottom: 10px;
+        }
+
+        /* About & Skills */
+        .about-text {
+            font-size: 1rem;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        .skill-item {
+            background-color: var(--text-dark);
+            color: #fff;
+            padding: 15px 20px;
+            border-radius: 8px;
+            margin-bottom: 10px;
+            display: flex;
+            justify-content: space-between;
+            font-weight: 600;
+            transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), background-color 0.3s;
+        }
+
+        .skill-item:hover {
+            transform: scale(1.03) translateX(5px);
+            background-color: #1a1a1a;
+        }
+
+        .skill-item span {
+            color: #888;
+        }
+
+        /* --- Portfolio Section --- */
+        .four-cols:hover .portfolio-card,
+        .four-cols:hover .coming-soon-card {
+            opacity: 0.4;
+            transform: scale(0.96);
+        }
+
+        .four-cols .portfolio-card:hover {
+            opacity: 1 !important;
+            transform: scale(1.06) translateY(-5px);
+            box-shadow: 0 15px 35px rgba(255, 255, 255, 0.15);
+            z-index: 5;
+        }
+
+        .four-cols .coming-soon-card:hover {
+            opacity: 1 !important;
+            transform: scale(1.02);
+        }
+
+        .portfolio-card {
+            background-color: var(--card-bg);
+            border-radius: 12px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            cursor: pointer;
+            position: relative;
+            transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1), opacity 0.4s ease, box-shadow 0.4s ease;
+        }
+
+        .portfolio-img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            background-color: #222;
+        }
+
+        .portfolio-info {
+            padding: 15px;
+            color: var(--text-dark);
+        }
+
+        .portfolio-info h3 {
+            margin: 0 0 5px 0;
+            font-size: 1.1rem;
+            font-weight: 700;
+        }
+
+        .portfolio-info p {
+            margin: 0;
+            font-size: 0.85rem;
+            color: #666;
+            font-weight: 600;
+        }
+
+        /* Coming Soon Card */
+        .coming-soon-card {
+            border: 2px dashed #444;
+            border-radius: 12px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 20px;
+            box-sizing: border-box;
+            background-color: rgba(20,20,20,0.5);
+            transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1), opacity 0.4s ease;
+        }
+
+        .coming-soon-card h3 {
+            margin: 0 0 10px 0;
+            font-size: 1.2rem;
+            color: #fff;
+            font-weight: 700;
+        }
+
+        .coming-soon-card p {
+            margin: 0;
+            font-size: 0.85rem;
+            color: #888;
+            font-weight: 600;
+            line-height: 1.4;
+        }
+
+        /* --- Pricing & Payment Methods --- */
+        .price-big {
+            font-size: 3rem;
+            font-weight: 800;
+            text-align: center;
+            margin: 10px 0 5px 0;
+            padding-bottom: 10px;
+        }
+
+        .price-big span {
+            font-size: 1rem;
+            font-weight: 600;
+            color: #888;
+        }
+
+        .price-subtitle {
+            font-size: 0.85rem;
+            color: #666;
+            font-weight: 600;
+            text-align: center;
+            margin-top: 0;
+            margin-bottom: 25px;
+            border-bottom: 2px solid #eee;
+            padding-bottom: 20px;
+        }
+
+        .perks-list {
+            list-style: none;
+            padding: 0;
+            margin-bottom: 30px;
+        }
+
+        .perks-list li {
+            padding: 8px 0;
+            font-weight: 600;
+            color: #333;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .perks-list li::before {
+            content: "•";
+            color: #000;
+            font-size: 1.5rem;
+        }
+
+        .btn-hire {
+            background-color: #000;
+            color: #fff;
+            width: 100%;
+            padding: 15px;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), background-color 0.3s;
+            text-decoration: none;
+            display: inline-block;
+            text-align: center;
+            box-sizing: border-box;
+            margin-top: auto;
+        }
+
+        .btn-hire:hover {
+            background-color: #333;
+            transform: scale(1.03);
+        }
+
+        /* Clean Typografie-Design für "RBX ONLY" */
+        .rbx-only-container {
+            display: flex;
+            justify-content: center;
+            align-items: baseline;
+            gap: 8px;
+            margin-bottom: 25px;
+            border-bottom: 2px solid #f1f1f1;
+            padding-bottom: 15px;
+        }
+
+        .rbx-only-container .rbx-text {
+            font-size: 2.2rem;
+            font-weight: 800;
+            color: #000;
+            letter-spacing: -1px;
+            line-height: 1;
+        }
+
+        .rbx-only-container .only-text {
+            font-size: 0.9rem;
+            font-weight: 700;
+            color: #777;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        /* Payment Methods Layout */
+        .payment-methods-list {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            height: 100%;
+            justify-content: center;
+            padding: 5px 0;
+        }
+
+        .payment-item {
+            background-color: #f8f9fa;
+            border: 1px solid #eaeaea;
+            border-radius: 10px;
+            padding: 15px 20px;
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .payment-item:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.03);
+        }
+
+        .payment-icon {
+            font-size: 1.2rem;
+            margin-top: 2px;
+        }
+
+        .payment-text h4 {
+            margin: 0 0 4px 0;
+            font-size: 1rem;
+            font-weight: 700;
+            color: #000;
+        }
+
+        .payment-text p {
+            margin: 0;
+            font-size: 0.85rem;
+            color: #555;
+            font-weight: 600;
+            line-height: 1.4;
+        }
+
+        .tax-alert {
+            color: #d9534f;
+            font-weight: 700 !important;
+        }
+
+        /* --- Lightbox Modal (Großansicht) --- */
+        .lightbox {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.95);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .lightbox.active {
+            display: flex;
+            opacity: 1;
+        }
+
+        .lightbox img {
+            max-width: 85%;
+            max-height: 85%;
+            border-radius: 12px;
+            box-shadow: 0 0 30px rgba(255,255,255,0.1);
+            transform: scale(0.9);
+            transition: transform 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
+        }
+
+        .lightbox.active img {
+            transform: scale(1);
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: 30px;
+            right: 40px;
+            color: #fff;
+            font-size: 45px;
+            font-weight: 400;
+            cursor: pointer;
+            transition: transform 0.2s, color 0.2s;
+            user-select: none;
+        }
+
+        .lightbox-close:hover {
+            transform: scale(1.15) rotate(90deg);
+            color: #ff4a4a;
+        }
+
+        /* ==========================================================================
+           ⚡ RESPONSIBLE RESPONSIVE MEDIA QUERIES (Perfekt optimiert für alle Mobilgeräte)
+           ========================================================================== */
+
+        @media (max-width: 900px) {
+            .hero {
+                flex-direction: column-reverse; /* Bild rückt auf Handys nach oben über den Text */
+                text-align: center;
+                padding: 40px 20px;
+                gap: 30px;
+            }
+
+            .hero-text h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero-text h1 span {
+                font-size: 1.5rem;
+            }
+
+            .highlights {
+                justify-content: center;
+                gap: 15px;
+            }
+
+            .circle {
+                width: 70px;
+                height: 70px;
+                font-size: 1rem;
+            }
+
+            .btn-message {
+                margin-top: 30px;
+                width: 100%;
+                justify-content: center;
+                box-sizing: border-box;
+            }
+
+            .hero-avatar {
+                width: 220px;
+                height: 220px;
+                margin: 0 auto;
+            }
+
+            .two-cols {
+                grid-template-columns: 1fr; /* Stapelt Spalten auf Tablets/Handys untereinander */
+                gap: 20px;
+            }
+
+            .four-cols {
+                grid-template-columns: 1fr 1fr; /* 2 Spalten im Portfolio auf kleineren Screens */
+            }
+
+            .section-title::before, .section-title::after {
+                width: 20%; /* Verkürzt die Linien neben den Titeln */
+            }
+        }
+
+        @media (max-width: 500px) {
+            .four-cols {
+                grid-template-columns: 1fr; /* 1 Spalte im Portfolio auf sehr kleinen Handys */
+            }
+
+            nav {
+                flex-direction: column;
+                gap: 15px;
+                text-align: center;
+            }
+
+            .nav-right {
+                width: 100%;
+                justify-content: center;
+            }
+
+            .highlights {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+        }
+
+    </style>
+</head>
+<body>
+
+<div class="container">
+    
+    <nav>
+        <div class="logo">VALENTIN <span>• Available</span></div>
+        <div class="nav-right">
+            <a href="#pricing" class="btn-nav-pricing">My Pricing <span class="arrow">▼</span></a>
+            <a href="https://discord.com/users/Crepy1661" target="_blank" class="btn-nav-icon" title="Contact me on Discord">
+                <svg viewBox="0 0 24 24">
+                    <path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
+                </svg>
+            </a>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <div class="hero-text">
+            <h1><span>Hi, I'm Valentin, a</span>UI Designer</h1>
+            
+            <div class="highlights">
+                <div class="highlight-item">
+                    <div class="circle">1 Year</div>
+                    <p>Experience</p>
+                </div>
+                <div class="highlight-item">
+                    <div class="circle">Roblox</div>
+                    <p>Focused</p>
+                </div>
+                <div class="highlight-item">
+                    <div class="circle">Native</div>
+                    <p>Designs</p>
+                </div>
+            </div>
+
+            <a href="https://discord.com/users/Crepy1661" target="_blank" class="btn-message">
+                Send me a message
+                <svg viewBox="0 0 24 24">
+                    <path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
+                </svg>
+            </a>
+        </div>
+        
+        <img src="https://i.imgur.com/Aok4YKQ.png" alt="Valentin Avatar" class="hero-avatar">
+        
+    </section>
+
+    <div class="section-title">ABOUT ME</div>
+    <section class="two-cols">
+        <div class="card">
+            <h2>My Skills</h2>
+            <div class="skill-item">Roblox Studio <span>UI Design</span></div>
+            <div class="skill-item">Native GUI <span>Optimization</span></div>
+            <div class="skill-item">Scaling & Layout <span>Implementation</span></div>
+        </div>
+        <div class="card">
+            <h2>About Me</h2>
+            <p class="about-text">
+                Hi, I'm Valentin. I'm a UI Designer based in Germany. I specialize in crafting modern, clean, and intuitive user interfaces built natively within Roblox. 
+                <br><br>
+                With a year of dedicated experience, I design and implement everything directly in Roblox Studio. This ensures perfect scaling, optimized performance, and a seamless player experience without relying on external design tools.
+            </p>
+        </div>
+    </section>
+
+    <div class="section-title">PAST WORK</div>
+    <section class="four-cols">
+        
+        <div class="portfolio-card" onclick="openLightbox('https://i.imgur.com/9dATJtB.png')">
+            <img src="https://i.imgur.com/9dATJtB.png" alt="Shop GUI" class="portfolio-img">
+            <div class="portfolio-info">
+                <h3>Shop GUI</h3>
+                <p>Clean layout designed for modern simulators.</p>
+            </div>
+        </div>
+
+        <div class="portfolio-card" onclick="openLightbox('https://i.imgur.com/8Gky26g.png')">
+            <img src="https://i.imgur.com/8Gky26g.png" alt="Inventory GUI" class="portfolio-img">
+            <div class="portfolio-info">
+                <h3>Inventory GUI</h3>
+                <p>Fully optimized and responsive item grid layout.</p>
+            </div>
+        </div>
+
+        <div class="portfolio-card" onclick="openLightbox('https://i.imgur.com/tIOUIs1.png')">
+            <img src="https://i.imgur.com/tIOUIs1.png" alt="Settings GUI" class="portfolio-img">
+            <div class="portfolio-info">
+                <h3>Settings GUI</h3>
+                <p>Minimalist settings menu with custom interactive toggles.</p>
+            </div>
+        </div>
+
+        <div class="coming-soon-card">
+            <h3>More Coming Soon</h3>
+            <p>Currently building new UI systems</p>
+        </div>
+
+    </section>
+
+    <div class="section-title" id="pricing">MY PRICING</div>
+    <section class="two-cols">
+        <div class="card">
+            <h2>Standard UI</h2>
+            <div class="price-big">
+                1,500 R$<span> / Frame</span>
+            </div>
+            <p class="price-subtitle">(Negotiable depending on complexity)</p>
+            <ul class="perks-list">
+                <li>Native Studio Design</li>
+                <li>Importing included</li>
+                <li>Single client focus</li>
+                <li>Mobile optimization</li>
+            </ul>
+            <a href="https://discord.com/users/Crepy1661" target="_blank" class="btn-hire">HIRE ME</a>
+        </div>
+        
+        <div class="card">
+            <h2>Accepted payment methods</h2>
+            
+            <div class="rbx-only-container">
+                <span class="rbx-text">RBX</span>
+                <span class="only-text">ONLY</span>
+            </div>
+
+            <div class="payment-methods-list">
+                
+                <div class="payment-item">
+                    <span class="payment-icon">✔️</span>
+                    <div class="payment-text">
+                        <h4>Group Payouts</h4>
+                        <p>Direct Robux transfer via Roblox Group funds without waiting times.</p>
+                    </div>
+                </div>
+
+                <div class="payment-item">
+                    <span class="payment-icon">✔️</span>
+                    <div class="payment-text">
+                        <h4>Roblox Plus</h4>
+                        <p>Direct account-to-account Robux transfer. No group required and 0% Roblox tax.</p>
+                    </div>
+                </div>
+
+                <div class="payment-item">
+                    <span class="payment-icon">⚠️</span>
+                    <div class="payment-text">
+                        <h4>Gamepass Payment</h4>
+                        <p class="tax-alert">Client MUST cover the 30% Roblox Tax!</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <br><br>
+</div>
+
+<div id="lightbox" class="lightbox" onclick="closeLightbox()">
+    <span class="lightbox-close" onclick="closeLightbox()">&times;</span>
+    <img id="lightbox-img" src="" alt="Enlarged UI View" onclick="event.stopPropagation()">
+</div>
+
+<script>
+    function openLightbox(imageSrc) {
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImg = document.getElementById('lightbox-img');
+        
+        lightboxImg.src = imageSrc;
+        lightbox.style.display = 'flex';
+        
+        setTimeout(() => {
+            lightbox.classList.add('active');
+        }, 10);
+    }
+
+    function closeLightbox() {
+        const lightbox = document.getElementById('lightbox');
+        lightbox.classList.remove('active');
+        
+        setTimeout(() => {
+            lightbox.style.display = 'none';
+        }, 300);
+    }
+</script>
+
+</body>
+</html>
