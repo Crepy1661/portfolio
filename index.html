@@ -331,11 +331,14 @@
             transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1), opacity 0.4s ease, box-shadow 0.4s ease;
         }
 
+        /* VORBEIGEFÜHRTE OPTIMIERUNG: Perfektes, responsives 4:3 Format für die Bilder */
         .portfolio-img {
             width: 100%;
-            height: 180px;
+            height: auto;
+            aspect-ratio: 4 / 3; /* Erzwingt das 4:3 Format auf jedem Bildschirm */
             object-fit: cover;
             background-color: #222;
+            display: block;
         }
 
         .portfolio-info {
@@ -636,6 +639,10 @@
 
             .four-cols {
                 grid-template-columns: 1fr 1fr; /* 2 Spalten im Portfolio auf kleineren Screens */
+            }
+
+            .coming-soon-card {
+                aspect-ratio: 4 / 3; /* Passt die Leere-Karte auf Mobilgeräten an die Bildgröße an */
             }
 
             .section-title::before, .section-title::after {
